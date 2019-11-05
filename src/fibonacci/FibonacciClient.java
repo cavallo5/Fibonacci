@@ -3,12 +3,14 @@ package fibonacci;
 import java.io.*;
 import java.math.BigInteger;
 import java.net.Socket;
+import fibonacci.Manager;
 
 public class FibonacciClient {
     private Socket socket;
     private BufferedReader in;
     private PrintWriter out;
-    
+    private static Manager manager;
+
     public FibonacciClient(String hostname, int port) throws IOException {
         socket = new Socket(hostname, port);
         in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
@@ -40,22 +42,19 @@ public class FibonacciClient {
     }
     
     public static void main(String[] args) throws IOException {
-    	int numeroclient=10;
     	String s;
+    	int numeroclient=10;
+    	manager=new Manager(numeroclient);
+    	String[] numeri = new String[numeroclient];
+    	String[] risultati = new String[numeroclient];
+    	//String[] elapsedtime = new String[numeroclient];
     	
-    	FileWriter w;
-        w=new FileWriter("output.txt");
-
-        BufferedWriter b;
-        b=new BufferedWriter (w);
-        b.write("Fibonacci Java \n");
-
     	
-        
     	for(int z=1; z <= numeroclient; z++) {
     	//Numero casuale tra 0 e M
     	int M=100;
     	int x= (int)(Math.random()*M -1);
+    	numeri[z-1]=String.valueOf(x);
     	
         try {
             FibonacciClient client = new FibonacciClient("localhost", FibonacciServer.FIBONACCI_PORT);
@@ -70,19 +69,21 @@ public class FibonacciClient {
                 BigInteger y = client.getReply();
                 System.out.println("fibonacci("+x+") = "+y);
                 
-              
-            // Scrivo file con risposte
                 s=y.toString();
-                b.write("Client: "+z+ "\n");
-                b.write("Il numero di Fibonacci di "+x+" è: "+s+ "\n");
-
+                risultati[z-1]=s;
+                
+                
+                if(z==numeroclient) {
+                	manager.inviodati(numeri,risultati);
+                	manager.creafile();
+                }
+                
+                
                 client.close();
-                b.write("\n");
         	} catch (IOException ioe) {
         		ioe.printStackTrace();
         	}
     	} //FINE FOR
-        b.flush();
     	
     }
 }

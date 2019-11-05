@@ -1,0 +1,11 @@
+Fibonacci Java 
+Il numero di Fibonacci di 32 è: 2178309
+Il numero di Fibonacci di 5 è: 5
+Il numero di Fibonacci di 88 è: 1100087778366101931
+Il numero di Fibonacci di 37 è: 24157817
+Il numero di Fibonacci di 16 è: 987
+Il numero di Fibonacci di 35 è: 9227465
+Il numero di Fibonacci di 4 è: 3
+Il numero di Fibonacci di 68 è: 72723460248141
+Il numero di Fibonacci di 37 è: 24157817
+Il numero di Fibonacci di 98 è: 135301852344706746049
