@@ -7,6 +7,7 @@ public class Manager {
 	String[] numeri;
 	String[] risultati;
 	String[] elapsedtime;
+	float tempototale;
 	FileWriter w;
 	
 	public Manager(int a){
@@ -16,9 +17,11 @@ public class Manager {
 		this.elapsedtime= new String[a];
 	}
 
-	public void inviodati(String[] a, String[] b) {
+	public void inviodati(String[] a, String[] b, String[] c, float d) {
 		this.numeri=a;
 		this.risultati=b;
+		this.elapsedtime=c;
+		this.tempototale=d;
 	}
 	
 	public void creafile() throws IOException{
@@ -27,19 +30,9 @@ public class Manager {
         b=new BufferedWriter (w);
         b.write("Fibonacci Java \n");
         for(int i=0;i<numeroclient;i++) {
-        	b.write("Il numero di Fibonacci di "+this.numeri[i]+" è: "+this.risultati[i]+ "\n");
+        	b.write((i+1)+")"+" Il numero di Fibonacci di "+this.numeri[i]+" è "+this.risultati[i]+" impiegando "+this.elapsedtime[i]+" µs \n");
         }
-        
-        
-        
-        
-        
-        //b.write("\n");
-        //b.write("Il numero di Fibonacci di "+x+" è: "+s+ "\n");
-
-        
-        
-        
+    	b.write("Tempo totale impiegato: "+this.tempototale+" µs \n");
         
         b.flush();
 

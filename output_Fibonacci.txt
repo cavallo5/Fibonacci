@@ -1,11 +1,12 @@
 Fibonacci Java 
-Il numero di Fibonacci di 32 è: 2178309
-Il numero di Fibonacci di 5 è: 5
-Il numero di Fibonacci di 88 è: 1100087778366101931
-Il numero di Fibonacci di 37 è: 24157817
-Il numero di Fibonacci di 16 è: 987
-Il numero di Fibonacci di 35 è: 9227465
-Il numero di Fibonacci di 4 è: 3
-Il numero di Fibonacci di 68 è: 72723460248141
-Il numero di Fibonacci di 37 è: 24157817
-Il numero di Fibonacci di 98 è: 135301852344706746049
+1) Il numero di Fibonacci di 35 è 9227465 impiegando 2985 µs 
+2) Il numero di Fibonacci di 35 è 9227465 impiegando 601 µs 
+3) Il numero di Fibonacci di 88 è 1100087778366101931 impiegando 343 µs 
+4) Il numero di Fibonacci di 45 è 1134903170 impiegando 348 µs 
+5) Il numero di Fibonacci di 82 è 61305790721611591 impiegando 279 µs 
+6) Il numero di Fibonacci di 39 è 63245986 impiegando 263 µs 
+7) Il numero di Fibonacci di 81 è 37889062373143906 impiegando 268 µs 
+8) Il numero di Fibonacci di 0 è 0 impiegando 252 µs 
+9) Il numero di Fibonacci di 0 è 0 impiegando 341 µs 
+10) Il numero di Fibonacci di 12 è 144 impiegando 440 µs 
+Tempo totale impiegato: 6120.0 µs 

@@ -10,6 +10,7 @@ public class FibonacciClient {
     private BufferedReader in;
     private PrintWriter out;
     private static Manager manager;
+    
 
     public FibonacciClient(String hostname, int port) throws IOException {
         socket = new Socket(hostname, port);
@@ -47,8 +48,8 @@ public class FibonacciClient {
     	manager=new Manager(numeroclient);
     	String[] numeri = new String[numeroclient];
     	String[] risultati = new String[numeroclient];
-    	//String[] elapsedtime = new String[numeroclient];
-    	
+    	String[] elapsedtime = new String[numeroclient];
+    	long start_time, end_time, time_used, total_time=0;
     	
     	for(int z=1; z <= numeroclient; z++) {
     	//Numero casuale tra 0 e M
@@ -60,6 +61,7 @@ public class FibonacciClient {
             FibonacciClient client = new FibonacciClient("localhost", FibonacciServer.FIBONACCI_PORT);
             
             // invio la richiesta
+                start_time=System.nanoTime(); //tempo in ns prima di inviare la richiesta al server
             	client.sendRequest(x);
                 System.out.println("fibonacci("+x+") = ?");
             
@@ -68,13 +70,23 @@ public class FibonacciClient {
  
                 BigInteger y = client.getReply();
                 System.out.println("fibonacci("+x+") = "+y);
+                end_time= System.nanoTime(); //tempo in ns dopo aver ricevuto la risposta del server
+                
+                
+                time_used= (long) ((end_time - start_time)/1000F); //tempo impiegato in 􏱇µs tra invio e risposta del server
+                total_time=total_time+time_used;
+                
                 
                 s=y.toString();
                 risultati[z-1]=s;
                 
+                //conversione time_used in string
+                s=String.valueOf(time_used);
+                
+                elapsedtime[z-1]=s;
                 
                 if(z==numeroclient) {
-                	manager.inviodati(numeri,risultati);
+                	manager.inviodati(numeri,risultati,elapsedtime, total_time);
                 	manager.creafile();
                 }
                 
