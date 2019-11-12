@@ -11,6 +11,7 @@ public class FibonacciClient {
     private PrintWriter out;
     private static Manager manager;
     
+    
 
     public FibonacciClient(String hostname, int port) throws IOException {
         socket = new Socket(hostname, port);
