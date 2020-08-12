@@ -1,1 +1,1 @@
-# Fibonacci-Java
+# Fibonacci
